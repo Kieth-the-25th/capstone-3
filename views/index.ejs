@@ -1,0 +1,36 @@
+<%- include("header.ejs") %>
+
+<div class="main container">
+    <div class="row">
+        <div class="col-md-12 col-lg-3">
+            <div class="list-container">
+                <ul class="list">
+                    <% if (locals.articles) { %>
+                        <% for (var i = 0; i < locals.articles.length; i++) { %>
+                            <li>
+                                <h6>
+                                    <a href=<%= "/read/" + i %>><%= locals.articles[i].title %></a>
+                                </h6>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-9">
+            <div class="text-display">
+                <% if (locals.article) { %>
+                    <h1><%= locals.article.title %></h1><%=  %>
+                    <p>
+                        <%= locals.article.text %>
+                    </p>
+                <% } else { %>
+                    <h1>Oops! Something went wrong.</h1>
+                    <a href="/">Go back</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>

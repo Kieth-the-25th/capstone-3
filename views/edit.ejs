@@ -1,0 +1,22 @@
+<%- include("header.ejs") %>
+
+<form class="input" action="/submit" method="POST">
+    <textarea type="text" name="title" rows="1" cols="90" placeholder="Title">
+        <% if (locals.article) { %>
+            <%= locals.article.title %>
+        <% } %>
+    </textarea>   
+    <textarea type="text" name="article" rows="20" cols="90" placeholder="Text">
+        <% if (locals.article) { %>
+            <%= locals.article.text %>
+        <% } %>
+    </textarea>   
+    <br>
+    <% if (locals.article) { %>
+        <input type="submit" value="OK" formaction=<%= "/submit/" + locals.article %>>
+    <% } else { %>
+        <input type="submit" value="OK" formaction="/submit/-1">
+    <% } %>
+</form>
+
+<%- include("footer.ejs") %>
